@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"  tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+    </LinearLayout>
+    <com.sun.widget.CrossList
+        android:id="@+id/cross_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rowTitleWidth="56dip"
+        app:rowTitleHeight="42dip"
+        app:columnTitleWidth="50dip"
+        app:columnTitleHeight="56dip"
+        app:rowTitleShadowSize="4dip"
+        app:rowTitleShadowRes="@drawable/flight_calendar_round_shadow_horizontally"
+        app:tableHeadRightShadowRes="@drawable/flight_calendar_round_shadow_vertically_top"
+        app:columnTitleShadowSize="5dip"
+        app:columnTitleShadowRes="@drawable/flight_calendar_round_shadow_vertically"
+        app:tableHeadBottomShadowRes="@drawable/flight_calendar_round_shadow_horizontally_left"/>
+
+</RelativeLayout>

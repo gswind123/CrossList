@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CrossList">
+        <attr name="rowTitleWidth" format="dimension" />
+        <attr name="rowTitleHeight" format="dimension" />
+        <attr name="columnTitleWidth" format="dimension" />
+        <attr name="columnTitleHeight" format="dimension" />
+        <attr name="rowTitleShadowSize" format="dimension" />
+        <attr name="columnTitleShadowSize" format="dimension"/>
+        <attr name="rowTitleShadowRes" format="reference"/>
+        <attr name="columnTitleShadowRes" format="reference"/>
+        <attr name="tableHeadBottomShadowRes" format="reference"/>
+        <attr name="tableHeadRightShadowRes" format="reference"/>
+    </declare-styleable>
+</resources>
