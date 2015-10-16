@@ -60,7 +60,6 @@ import java.util.Map;
  *     refreshList.add(new Pair(1, 2));
  *     adapter.notifyDataSetInvalidated(refreshList);
  * </code>
- * Created by yw_sun on 2015/9/10.
  */
 public class CrossList extends ViewGroup {
     /** Logic Constants */
@@ -620,7 +619,8 @@ public class CrossList extends ViewGroup {
     }
 
     /**
-     * Over scroll views
+     * The direction of over-scroll views
+     * OVER_SCROLL_LEFT means the view shows when drag left too much
      */
     static public final int OVER_SCROLL_LEFT = 0;
     static public final int OVER_SCROLL_TOP = 1;
@@ -1257,11 +1257,26 @@ public class CrossList extends ViewGroup {
 
     /**
      * Enable outer to supervise the over scroll of CrossList
-     * TODO:add comments
+     * When scroll reaches the bound of CrossList, the OverScrollListener's methods will be
+     * triggered to make outside able to handle over scroll events.
+     * For that more than one side could be over-scrolled at the same time, methods deliver
+     * every over-scroll side as params.
+     * NOTE:In every single layout event, methods will be triggered only ONCE
      */
     static public class OverScrollModel{
+        /**
+         * over-scroll-pixels / overView-pixels , always positive,
+         * equals 1.f when overView is just totally shown
+         */
         public final float overDegree;
+        /**
+         * @see CrossList#OVER_SCROLL_LEFT
+         */
         public final int type;
+        /**
+         * The view shows when over-scrolled
+         * @see CrossList#OVER_SCROLL_LEFT
+         */
         public final View overView;
         public OverScrollModel(View overView, int type, float overDegree) {
             this.overView = overView;
@@ -1270,10 +1285,26 @@ public class CrossList extends ViewGroup {
         }
     }
     static public interface OverScrollListener{
+        /**
+         * Trigger when layout is over-scrolled
+         * @param overScrollList the over-scroll-models for currently over-scrolled parts
+         * @return
+         */
         public void onScrollOverBy(CrossList list, ArrayList<OverScrollModel> overScrollList);
+        /**
+         * Trigger when layout's over-scroll is released
+         * @param overScrollList the over-scroll-models for currently over-scrolled parts
+         * @return
+         */
         public void onScrollOverRelease(CrossList list, ArrayList<OverScrollModel> overScrollList);
     }
     private OverScrollListener mOverScrollListener = null;
+    /**
+     * Set the over-scroll listener
+     * @see CrossList.OverScrollModel
+     * @param listener
+     * @return
+     */
     public void setOverScrollListener(OverScrollListener listener) {
         mOverScrollListener = listener;
     }
